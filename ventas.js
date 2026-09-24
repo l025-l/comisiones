@@ -8,7 +8,7 @@ function calcularComision(numeroVentas, precioProducto){
         comision= ventasExtras*(precioProducto*0.10);
     }
 
-    return comision
+    return comision;
 }
 
 function calcular(){
@@ -20,28 +20,32 @@ function calcular(){
     //recuperamos el valor de las cajas de texto
     //let sueldoBaseStr=componenteSueldoBase.value;
     
-    let sueldoBaseStr=recuperarTexto("txtSueldoBase");
-    let numeroVentasStr=recuperarTexto("txtVentas");
-    let precioProductoStr=recuperarTexto("txtPrecio");
+    let sueldoBase=recuperarFloat("txtSueldoBase");
+    let numeroVentas=recuperarFloat("txtVentas");
+    let precioProducto=recuperarFloat("txtPrecio");
 
     //let numeroVentasStr=componenteVentas.value;
     //let precioProductoStr=componentePrecio.value;
 
     //convertimos el texto a numero
-    let sueldoBase=parseFloat(sueldoBaseStr);
-    let numeroVentas=parseFloat(numeroVentasStr);
-    let precioProducto=parseFloat(precioProductoStr);
+    //let sueldoBase=parseFloat(sueldoBaseStr);
+    //let numeroVentas=parseFloat(numeroVentasStr);
+    //let precioProducto=parseFloat(precioProductoStr);
 
     let comision=calcularComision(numeroVentas, precioProducto);
 
     let total=sueldoBase+comision;
 
-    let spSueldoBase=document.getElementById("spSueldoBase");
-    let spComision=document.getElementById("spComision");
-    let spTotal=document.getElementById("spTotal");
+    //let spSueldoBase=document.getElementById("spSueldoBase");
+    //let spComision=document.getElementById("spComision");
+    //let spTotal=document.getElementById("spTotal");
 
-    spSueldoBase.textContent=sueldoBase;
-    spComision.textContent=comision;
-    spTotal.textContent=total;
+    //spSueldoBase.textContent=sueldoBase;
+    //spComision.textContent=comision;
+    //spTotal.textContent=total;
+
+    mostrarEnSpan("spSueldoBase", sueldoBase);
+    mostrarEnSpan("spComision", comision);
+    mostrarEnSpan("spTotal", total);
 
 }
