@@ -11,7 +11,24 @@ function calcularComision(numeroVentas, precioProducto){
     return comision;
 }
 
+function validarVentas(){
+
+    let numeroVentasStr=recuperarTexto("txtVentas");
+
+    if(numeroVentasStr.length>5){
+        alert("Maximo 5 caracteres")
+        return false;
+    }else{
+        return true;
+    }
+}
+
 function calcular(){
+
+    if(validarVentas()==false){
+        return;
+    }
+
     //recuperamos propiedades de las cajas de texto
     //let componenteSueldoBase=document.getElementById("txtSueldoBase");
     //let componenteVentas=document.getElementById("txtVentas");
