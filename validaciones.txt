@@ -1,0 +1,17 @@
+Prompt 1:"Actúa como un desarrollador web experto. Necesito que agregues validaciones en JavaScript a mi formulario para transformarlo en un Simulador de Crédito.
+
+Condiciones técnicas estrictas:
+NO cambies, modifiques ni elimines los IDs originales de mi HTML (txtSueldoBase, txtVentas, txtPrecio, spSueldoBase, spComision, spTotal).
+Las validaciones deben ejecutarse TODAS a la vez únicamente cuando el usuario presione el botón 'Calcular Simulador'.
+Los mensajes de error deben mostrarse debajo de cada input correspondiente, en color rojo y letra cursiva.
+
+Reglas de validación a implementar:
+Campo Monto (usando txtSueldoBase): Debe ser obligatorio, aceptar solo números, con un monto mínimo de $500 y un máximo de $50,000.
+Campo Tasa (usando txtVentas): Debe ser obligatorio, aceptar números (incluidos decimales), ser mayor a 0 y con un máximo de 30%.
+Campo Plazo (usando txtPrecio): Debe ser obligatorio, aceptar solo números enteros, con un mínimo de 6 meses y un máximo de 72 meses.
+Por favor, devuélveme la función JavaScript calcular() modificada para cumplir con todas estas reglas matemáticas y lógicas sin romper mi estructura actual."
+
+
+Prompt 2:"Actúa como un desarrollador web experto. Necesito que actualices la función JavaScript calcular() de mi formulario para transformarlo en un Simulador de Crédito, aplicando validaciones estrictas de tipos de datos.   Condiciones técnicas innegociables:NO modifiques los IDs originales de mi HTML (txtSueldoBase, txtVentas, txtPrecio, spSueldoBase, spComision, spTotal).Las validaciones deben ejecutarse únicamente cuando el usuario presione el botón 'Calcular Simulador'.   Los mensajes de error deben mostrarse debajo de cada input validado, en color rojo y letra cursiva.   Reglas de validación por campo:Campo Monto (txtSueldoBase): Campo obligatorio. Validar tipo de dato: bloquear letras y permitir solo números. Monto mínimo de $500 y máximo de $50,000.   Campo Tasa (txtVentas): Campo obligatorio. Validar tipo de dato: bloquear letras y permitir solo números (se aceptan decimales). Mayor a 1 y máximo 30.   Campo Plazo (txtPrecio): Campo obligatorio. Validar tipo de dato: bloquear letras o símbolos, permitir solo números enteros. Mínimo 6 meses y máximo 72 meses.   Si el usuario intenta ingresar texto, la función debe detenerse y mostrar un error específico como 'Solo números (máximo 2 decimales, No letras).'. Devuélveme el código JavaScript adaptado respetando mi estructura."
+
+Prompt 3:"Campo txtPrecio: Campo obligatorio. Validar tipo de dato con expresiones regulares para bloquear letras y permitir solo números con un máximo de 2 decimales. Mantener el rango mínimo de 0.1 y máximo de 1000."

@@ -42,42 +42,67 @@ function validarInput(input) {
 
 function calcular() {
 
+    let esValido = true;
+
+    document.getElementById('error-txtSueldoBase').textContent = "";
+    document.getElementById('error-txtVentas').textContent = "";
+    document.getElementById('error-txtPrecio').textContent = "";
+
+    let valMonto = document.getElementById('txtSueldoBase').value.trim();
+    let valTasa = document.getElementById('txtVentas').value.trim();
+    let valPlazo = document.getElementById('txtPrecio').value.trim();
 
 
-    //recuperamos propiedades de las cajas de texto
-    //let componenteSueldoBase=document.getElementById("txtSueldoBase");
-    //let componenteVentas=document.getElementById("txtVentas");
-    //let componentePrecio=document.getElementById("txtPrecio");
+    if (valMonto === "") {
+        document.getElementById('error-txtSueldoBase').textContent = "El monto es obligatorio.";
+        esValido = false;
+    } else if (isNaN(valMonto)) { // Si tiene letras, isNaN será verdadero
+        document.getElementById('error-txtSueldoBase').textContent = "Solo se permiten números, no letras.";
+        esValido = false;
+    } else if (parseFloat(valMonto) < 500 || parseFloat(valMonto) > 50000) {
+        document.getElementById('error-txtSueldoBase').textContent = "El monto debe estar entre $500 y $50,000.";
+        esValido = false;
+    }
 
-    //recuperamos el valor de las cajas de texto
-    //let sueldoBaseStr=componenteSueldoBase.value;
+    if (valTasa === "") {
+        document.getElementById('error-txtVentas').textContent = "La tasa es obligatoria.";
+        esValido = false;
+    } else if (isNaN(valTasa)) { // Si tiene letras
+        document.getElementById('error-txtVentas').textContent = "Solo se permiten números.";
+        esValido = false;
+    } else if (parseInt(valTasa) <= 1 || parseInt(valTasa) > 30) {
+        document.getElementById('error-txtVentas').textContent = "La tasa debe ser mayor a 1 y máximo 30%, (Sin decimales) ";
+        esValido = false;
+    }
 
-    let sueldoBase = recuperarFloat("txtSueldoBase");
-    let numeroVentas = recuperarFloat("txtVentas");
-    let precioProducto = recuperarFloat("txtPrecio");
+    if (valPlazo === "") {
+        document.getElementById('error-txtPrecio').textContent = "El campo es obligatorio.";
+        esValido = false;
+    } else if (!/^\d+(\.\d{1,2})?$/.test(valPlazo)) {
+        // ^\d+(\.\d{1,2})?$ -> Bloquea letras y permite números enteros o con máximo 2 decimales
+        document.getElementById('error-txtPrecio').textContent = "Solo números (máximo 2 decimales, No letras).";
+        esValido = false;
+    } else if (parseFloat(valPlazo) < 0.1 || parseFloat(valPlazo) > 1000) {
+        // Usamos parseFloat en lugar de parseInt para no perder los decimales al evaluar
+        document.getElementById('error-txtPrecio').textContent = "El valor debe estar entre 0.1 y 1000.";
+        esValido = false;
+    }
 
-    //let numeroVentasStr=componenteVentas.value;
-    //let precioProductoStr=componentePrecio.value;
 
-    //convertimos el texto a numero
-    //let sueldoBase=parseFloat(sueldoBaseStr);
-    //let numeroVentas=parseFloat(numeroVentasStr);
-    //let precioProducto=parseFloat(precioProductoStr);
+    if (esValido) {
+        let monto = parseFloat(valMonto);
+        let tasaAnual = parseFloat(valTasa);
+        let plazo = parseInt(valPlazo);
 
-    let comision = calcularComision(numeroVentas, precioProducto);
+        // Fórmula de amortización
+        let tasaMensual = (tasaAnual / 100) / 12;
+        let cuota = monto * (tasaMensual / (1 - Math.pow(1 + tasaMensual, -plazo)));
+        let totalPagar = cuota * plazo;
+        let intereses = totalPagar - monto;
 
-    let total = sueldoBase + comision;
-
-    //let spSueldoBase=document.getElementById("spSueldoBase");
-    //let spComision=document.getElementById("spComision");
-    //let spTotal=document.getElementById("spTotal");
-
-    //spSueldoBase.textContent=sueldoBase;
-    //spComision.textContent=comision;
-    //spTotal.textContent=total;
-
-    mostrarEnSpan("spSueldoBase", sueldoBase);
-    mostrarEnSpan("spComision", comision);
-    mostrarEnSpan("spTotal", total);
-
+        // Imprimimos en TUS spans originales
+        document.getElementById('spSueldoBase').textContent = "$" + cuota.toFixed(2);
+        document.getElementById('spComision').textContent = "$" + intereses.toFixed(2);
+        document.getElementById('spTotal').textContent = "$" + totalPagar.toFixed(2);
+    }
 }
