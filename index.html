@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <!-- Esta etiqueta es OBLIGATORIA para que el diseño sea responsive en móviles -->
@@ -9,19 +10,23 @@
     <script src="utilitarios.js"></script>
     <script src="ventas.js"></script>
 </head>
+
 <body>
 
     <div class="contenedor">
         <h1>Calculadora de Comisiones</h1>
 
         <label for="txtSueldoBase">Salario Base:</label>
-        <input type="text" id="txtSueldoBase" placeholder="Ej. 500">
+        <input type="text" id="txtSueldoBase" onblur="validarInput(this)">
+        <span id="error-txtSueldoBase" class="mensaje-error"></span>
 
         <label for="txtVentas">Número de ventas:</label>
-        <input type="text" id="txtVentas" onblur="validarVentas()">
+        <input type="text" id="txtVentas" onblur="validarInput(this)">
+        <span id="error-txtVentas" class="mensaje-error"></span>
 
         <label for="txtPrecio">Precio del producto:</label>
-        <input type="text" id="txtPrecio" placeholder="Ej. 25.50">
+        <input type="text" id="txtPrecio" onblur="validarInput(this)">
+        <span id="error-txtPrecio" class="mensaje-error"></span>
 
         <button onclick="calcular()">Calcular Comisión</button>
 
@@ -32,4 +37,5 @@
     </div>
 
 </body>
+
 </html>

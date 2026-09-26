@@ -14,8 +14,9 @@ body {
     justify-content: center;
     align-items: center;
     /* Usar min-height evita que el contenido se corte en pantallas horizontales de celulares */
-    min-height: 100vh; 
-    padding: 20px; /* Un margen de seguridad para que no toque los bordes del celular */
+    min-height: 100vh;
+    padding: 20px;
+    /* Un margen de seguridad para que no toque los bordes del celular */
 }
 
 .contenedor {
@@ -25,7 +26,8 @@ body {
     /* Aquí ocurre la magia del responsive: ocupa el 100% pero nunca pasa de 400px */
     width: 100%;
     max-width: 400px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* Sombra para dar profundidad */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    /* Sombra para dar profundidad */
 }
 
 h1 {
@@ -60,7 +62,8 @@ input {
     background-color: #0f172a;
     color: white;
     font-size: 1rem;
-    transition: all 0.3s ease; /* Suavidad en las animaciones */
+    transition: all 0.3s ease;
+    /* Suavidad en las animaciones */
 }
 
 /* Efecto de foco cuando el usuario toca el input en su celular */
@@ -89,13 +92,15 @@ button:hover {
 }
 
 button:active {
-    transform: scale(0.98); /* Pequeño efecto de "hundimiento" al hacer clic */
+    transform: scale(0.98);
+    /* Pequeño efecto de "hundimiento" al hacer clic */
 }
 
 /* Estilización de la zona de resultados para que se vea como un ticket limpio */
 p {
     display: flex;
-    justify-content: space-between; /* Separa el texto del resultado a los extremos */
+    justify-content: space-between;
+    /* Separa el texto del resultado a los extremos */
     margin-bottom: 0.8rem;
     font-size: 0.95rem;
     color: #cbd5e1;
@@ -107,7 +112,8 @@ span {
 }
 
 .total-destacado span {
-    color: #22c55e; /* Resalta el total final en verde */
+    color: #22c55e;
+    /* Resalta el total final en verde */
     font-size: 1.1rem;
 }
 
@@ -116,8 +122,21 @@ span {
     .contenedor {
         padding: 1.5rem;
     }
-    
+
     h1 {
         font-size: 1.25rem;
     }
+}
+
+.mensaje-error {
+    color: red;
+    font-style: italic;
+    font-size: 0.85rem;
+    display: block;
+    /* Para que quede debajo del input */
+    margin-top: -10px;
+    /* Ajusta el espacio con el input de arriba */
+    margin-bottom: 10px;
+    min-height: 18px;
+    /* Evita que los elementos salten cuando aparece el texto */
 }
