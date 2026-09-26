@@ -1,35 +1,123 @@
+/* Reseteo básico para evitar que los paddings rompan el diseño en pantallas pequeñas */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: Arial;
+    /* Tipografía más moderna y limpia */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: #0f172a;
-    color: white;
+    color: #f8fafc;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* Usar min-height evita que el contenido se corte en pantallas horizontales de celulares */
+    min-height: 100vh; 
+    padding: 20px; /* Un margen de seguridad para que no toque los bordes del celular */
 }
 
 .contenedor {
     background-color: #1e293b;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    /* Aquí ocurre la magia del responsive: ocupa el 100% pero nunca pasa de 400px */
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* Sombra para dar profundidad */
+}
+
+h1 {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #f1f5f9;
+}
+
+h2 {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    color: #cbd5e1;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 0.5rem;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin-bottom: 0.4rem;
 }
 
 input {
     width: 100%;
-    margin-bottom: 10px;
-    padding: 5px;
+    margin-bottom: 1.2rem;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #475569;
+    background-color: #0f172a;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease; /* Suavidad en las animaciones */
+}
+
+/* Efecto de foco cuando el usuario toca el input en su celular */
+input:focus {
+    outline: none;
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
 }
 
 button {
     width: 100%;
-    padding: 10px;
+    padding: 14px;
+    margin-top: 0.5rem;
     background-color: #22c55e;
     border: none;
+    border-radius: 8px;
     color: white;
+    font-size: 1.05rem;
+    font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s;
 }
 
 button:hover {
     background-color: #16a34a;
+}
+
+button:active {
+    transform: scale(0.98); /* Pequeño efecto de "hundimiento" al hacer clic */
+}
+
+/* Estilización de la zona de resultados para que se vea como un ticket limpio */
+p {
+    display: flex;
+    justify-content: space-between; /* Separa el texto del resultado a los extremos */
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+}
+
+span {
+    font-weight: bold;
+    color: white;
+}
+
+.total-destacado span {
+    color: #22c55e; /* Resalta el total final en verde */
+    font-size: 1.1rem;
+}
+
+/* Media Query para celulares muy pequeños (ej. iPhone SE) */
+@media (max-width: 360px) {
+    .contenedor {
+        padding: 1.5rem;
+    }
+    
+    h1 {
+        font-size: 1.25rem;
+    }
 }
